@@ -23,10 +23,17 @@ function getJSON(url) {
 }
 
 // getOneCard
-function getOneCard(cardName) {
-	var promise = getJSON("https://omgvamp-hearthstone-v1.p.mashape.com/cards/" + cardName);
+function getOneCard(req, res) {
+	var promise = getJSON("https://omgvamp-hearthstone-v1.p.mashape.com/cards/" + req.body.cardName);
 
-	return promise;
+	promise
+		.then(function(response) {
+			res.send(response);
+		})
+		.catch(function(error) {
+			console.error(error);
+			res.send(Error('There was a problem retrieving the card!'));
+		});
 }
 
 

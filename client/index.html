@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="promises">
 <head>
 	<meta charset="UTF-8">
 	<title>Promises Test</title>
 </head>
 <body>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+	<div class="container" ng-controller="cardsCtrl">
+		<h3>Get one card's info</h3>
+		<form>
+			<input type="text" ng-model="cardName">
+			<button ng-click="getSingle()">Get single card</button>
+		</form>
+		<p ng-if="singleCard != undefined">{{singleCard}}</p>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
+	<script src="/dist/main.js"></script>
 </body>
 </html>

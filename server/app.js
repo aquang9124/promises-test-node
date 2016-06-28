@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var port = process.env.PORT || 8000;
 var bodyParser = require('body-parser');
+var http = require('http');
 
 // get instance of express
 var app = express();
@@ -17,10 +18,9 @@ app.use(express.static(path.join(__dirname, '../client')));
 app.use('/', routes);
 
 // config server //
-var server = app.listen(port, function() {
-	console.log('Server is now listening on port: ' + port);
+var server = http.createServer(app);
+server.listen(port, function() {
+	console.log('Node server is listening on port: ' + port);
 });
 
-module.exports = {
-	server: server
-};
+module.exports = app;
